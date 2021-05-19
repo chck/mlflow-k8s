@@ -1,7 +1,7 @@
 # mlflow-k8s
 An easy-to-use platform to track experiments, flexible more users.
 
-![mlflow-k8s](https://user-images.githubusercontent.com/7288735/118873476-c6311a00-b924-11eb-8300-aed6c1b59e8e.png)
+![mlflow-k8s](https://user-images.githubusercontent.com/7288735/118873738-0f816980-b925-11eb-8125-6e68bd418140.png)
 
 ## Prerequisites
 | Software                   | Install (Mac)              |
