@@ -1,0 +1,9 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: ${backend_config_name}
+spec:
+  iap:
+    enabled: true
+    oauthclientCredentials:
+      secretName: ${secret_name}
