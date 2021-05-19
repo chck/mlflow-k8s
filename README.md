@@ -50,14 +50,14 @@ make secrets
 
 3. Prepare the dependencies for terraform
 ```bash
-cd infra
-```
-
-```bash
 make creds
 ```
 
 4. Run terraform
+```bash
+cd infra
+```
+
 ```bash
 terraform init
 ```
@@ -67,6 +67,10 @@ terraform apply
 ```
 
 5. Check your launched server accessible via Cloud IAP
+```bash
+cd ..
+```
+
 ```bash
 make access
 ```
