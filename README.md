@@ -32,11 +32,11 @@ cp .env.example .env
 vi .env
 =====================
 GCP_PROJECT=YOUR_GCP_PROJECT
-TF_GCS_BUCKET=YOUR_PREFIX-tfstate
 GOOGLE_APPLICATION_CREDENTIALS=/path/to/gcp-terraform-credentials.json
-SERVICE_ACCOUNT_EMAIL=mlflow-k8s@${GCP_PROJECT}.iam.gserviceaccount.com
+TF_GCS_BUCKET=YOUR_PREFIX-tfstate
 MLFLOW_DOMAIN=YOUR_MLFLOW_DOMAIN
 MLFLOW_ENDPOINT=https://${MLFLOW_DOMAIN}/user1/#
+SERVICE_ACCOUNT_EMAIL=mlflow-k8s@${GCP_PROJECT}.iam.gserviceaccount.com
 ```
 
 ```bash
