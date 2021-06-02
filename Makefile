@@ -16,6 +16,12 @@ creds:
 	kubectl config use-context gke_$(GCP_PROJECT)_$(REGION)_$(GKE_CLUSTER)
 	kubectl config get-contexts
 
+.PHONY: replace  ## Replace the dummy variables to your ones in .tf file
+replace:
+	sed -i "" s/_YOUR_PROJECT/${GCP_PROJECT}/g infra/*.tf
+	sed -i "" s/_YOUR_BUCKET/${TF_GCS_BUCKET}/g infra/*.tf
+	sed -i "" s/_YOUR_MLFLOW_DOMAIN/${MLFLOW_DOMAIN}/g infra/*.tf
+
 .PHONY: access  ## Access the server via Cloud IAP Authentification
 access:
 	$(eval CLIENT_ID := $(shell jq .web.client_id infra/secrets/oauth_client_secret.json))
