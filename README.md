@@ -43,17 +43,12 @@ SERVICE_ACCOUNT_EMAIL=mlflow-k8s@${GCP_PROJECT}.iam.gserviceaccount.com
 direnv allow .
 ```
 
-2. Download the gcloud credentials
-```bash
-make secrets
-```
-
-3. Prepare the dependencies for terraform
+2. Prepare the dependencies for terraform
 ```bash
 make creds
 ```
 
-4. Run terraform
+3. Run terraform
 ```bash
 cd infra
 ```
@@ -66,7 +61,7 @@ terraform init
 terraform apply
 ```
 
-5. Check your launched server accessible via Cloud IAP
+4. Check your launched server accessible via Cloud IAP
 ```bash
 cd ..
 ```
