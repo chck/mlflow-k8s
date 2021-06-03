@@ -2,7 +2,7 @@ variable "gke" {
   type = map(string)
   default = {
     cluster_name       = "mlflow-k8s"
-    k8s_version        = "1.19.7-gke.1500"
+    k8s_version        = "1.19.9-gke.1900"
     initial_node_count = 1
     min_node_count     = 1
     max_node_count     = 1
@@ -24,9 +24,6 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = true
   initial_node_count       = var.gke.initial_node_count
 
-  release_channel {
-    channel = "RAPID"
-  }
   vertical_pod_autoscaling {
     enabled = true
   }

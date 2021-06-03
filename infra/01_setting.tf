@@ -1,14 +1,14 @@
 terraform {
-  required_version = "~> 0.15.3"
+  required_version = "~> 0.15.4"
 
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "~> 3.67.0"
+      version = "~> 3.69.0"
     }
     google-beta = {
       source  = "hashicorp/google-beta"
-      version = "~> 3.67.0"
+      version = "~> 3.69.0"
     }
     local = {
       source  = "hashicorp/local"
@@ -20,11 +20,11 @@ terraform {
     }
     kubectl = {
       source  = "gavinbunney/kubectl"
-      version = "~> 1.10.0"
+      version = "~> 1.11.1"
     }
     postgresql = {
       source  = "cyrilgdn/postgresql"
-      version = "~> 1.12.1"
+      version = "~> 1.13.0"
     }
   }
 
