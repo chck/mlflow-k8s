@@ -182,3 +182,6 @@ terraform.rc
 # Secret files such as google credentials
 **/secrets/*
 !/**/.gitkeep
+
+# Ignore tf state cuz this repository is for hands-on
+.terraform.lock.hcl
