@@ -15,6 +15,7 @@ resource "kubernetes_service" "internal" {
   for_each = local.users
   depends_on = [
     google_container_cluster.primary,
+    kubernetes_ingress.mlflow,
   ]
   metadata {
     name = "service-${each.value}"

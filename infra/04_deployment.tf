@@ -31,6 +31,8 @@ resource "kubernetes_deployment" "mlflow" {
   for_each = local.users
   depends_on = [
     google_container_cluster.primary,
+    kubectl_manifest.backend_config,
+    kubernetes_service.internal,
   ]
   metadata {
     name = "mlflow-${each.value}"
@@ -51,6 +53,7 @@ resource "kubernetes_deployment" "mlflow" {
         service_account_name = kubernetes_service_account.ksa.metadata[0].name
         node_selector = {
           "iam.gke.io/gke-metadata-server-enabled" = "true"
+          "cloud.google.com/gke-nodepool"          = google_container_node_pool.preemptible_nodes.name
         }
         container {
           name  = "mlflow"
