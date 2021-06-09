@@ -15,7 +15,7 @@ resource "google_container_cluster" "primary" {
   provider = google-beta
 
   name               = var.gke.cluster_name
-  location           = var.common.region
+  location           = local.common.region
   min_master_version = var.gke.k8s_version
 
   # We can't create a cluster with no node pool defined, but we want to only use
@@ -39,7 +39,7 @@ resource "google_container_cluster" "primary" {
     }
   }
   workload_identity_config {
-    identity_namespace = "${var.common.project}.svc.id.goog"
+    identity_namespace = "${local.common.project}.svc.id.goog"
   }
   logging_service    = "logging.googleapis.com/kubernetes"
   monitoring_service = "monitoring.googleapis.com/kubernetes"
@@ -50,8 +50,8 @@ resource "google_container_node_pool" "preemptible_nodes" {
 
   name               = "${var.gke.cluster_name}-preemptible-nodes"
   cluster            = google_container_cluster.primary.name
-  location           = var.common.region
-  node_locations     = [var.common.zone]
+  location           = local.common.region
+  node_locations     = [local.common.zone]
   initial_node_count = var.gke.initial_node_count
 
   node_config {

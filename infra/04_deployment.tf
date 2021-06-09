@@ -22,7 +22,7 @@ resource "kubernetes_service_account" "ksa" {
   metadata {
     name = var.deployment.ksa_name
     annotations = {
-      "iam.gke.io/gcp-service-account" = "${google_service_account.sa.account_id}@${var.common.project}.iam.gserviceaccount.com"
+      "iam.gke.io/gcp-service-account" = "${google_service_account.sa.account_id}@${local.common.project}.iam.gserviceaccount.com"
     }
   }
 }
@@ -82,7 +82,7 @@ resource "kubernetes_deployment" "mlflow" {
         container {
           name    = "cloud-sql-proxy"
           image   = "gcr.io/cloudsql-docker/gce-proxy:1.22.0-alpine"
-          command = ["/cloud_sql_proxy", "-instances=${var.common.project}:${var.common.region}:${var.database.instance_name}=tcp:5432"]
+          command = ["/cloud_sql_proxy", "-instances=${local.common.project}:${local.common.region}:${var.database.instance_name}=tcp:5432"]
           security_context {
             run_as_non_root = true
           }
