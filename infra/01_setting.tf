@@ -29,7 +29,7 @@ terraform {
   }
 
   backend "gcs" {
-    bucket = "_YOUR_BUCKET"
+    bucket = "_YOUR_TF_BUCKET"
     prefix = "mlflow-k8s"
   }
 }

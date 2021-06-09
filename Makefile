@@ -8,7 +8,8 @@ all: help
 .PHONY: tf  ## Replace the dummy variables to your ones in .tf file
 tf:
 	sed -i "" s/_YOUR_PROJECT/${GCP_PROJECT}/g infra/*.tf
-	sed -i "" s/_YOUR_BUCKET/${TF_GCS_BUCKET}/g infra/*.tf
+	sed -i "" s/_YOUR_TF_BUCKET/${TF_GCS_BUCKET}/g infra/*.tf
+	sed -i "" s/_YOUR_MLFLOW_BUCKET/${MLFLOW_GCS_BUCKET}/g infra/*.tf
 	sed -i "" s/_YOUR_MLFLOW_DOMAIN/${MLFLOW_DOMAIN}/g infra/*.tf
 
 .PHONY: bucket  ## Initialize the bucket for terraform
