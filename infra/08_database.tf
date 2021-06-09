@@ -30,6 +30,9 @@ resource "random_password" "db_password" {
 }
 
 resource "google_sql_user" "postgres" {
+  depends_on = [
+    google_sql_database_instance.postgres,
+  ]
   name     = var.database.user_name
   instance = google_sql_database_instance.postgres.name
   password = random_password.db_password.result
@@ -42,6 +45,9 @@ provider "postgresql" {
   password = google_sql_user.postgres.password
 }
 resource "postgresql_database" "mlflow" {
+  depends_on = [
+    google_sql_database_instance.postgres,
+  ]
   for_each = local.users
   name     = "u_${each.value}"
 }
