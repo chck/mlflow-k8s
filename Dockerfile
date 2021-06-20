@@ -18,7 +18,7 @@ RUN poetry install --no-dev
 
 WORKDIR /home
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
- && git clone -b 1.17.1-patch1 --single-branch https://github.com/chck/mlflow.git \
+ && git clone -b 1.17.0-patch1 --single-branch https://github.com/chck/mlflow.git \
  && cd mlflow/mlflow/server/js \
  && npm install \
  && npm run build
