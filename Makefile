@@ -30,7 +30,7 @@ access:
 	    --audiences $(CLIENT_ID) \
 	    --impersonate-service-account $(SERVICE_ACCOUNT_EMAIL) \
 	    --include-email))
-	curl -s -w"\n" -H "Authorization: Bearer $(ID_TOKEN)" $(MLFLOW_ENDPOINT) -vvv
+	curl -s -w"\n" -H "Authorization: Bearer $(ID_TOKEN)" $(MLFLOW_TRACKING_URI) -vvv
 
 .PHONY: help ## View help
 help:
