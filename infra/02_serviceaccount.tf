@@ -14,3 +14,9 @@ resource "google_project_iam_member" "sql" {
   role    = "roles/cloudsql.client"
   member  = "serviceAccount:${google_service_account.sa.account_id}@${local.common.project}.iam.gserviceaccount.com"
 }
+
+resource "google_project_iam_member" "gcs_viewer" {
+  project = local.common.project
+  role    = "roles/storage.objectViewer"
+  member  = "serviceAccount:${google_service_account.sa.account_id}@${local.common.project}.iam.gserviceaccount.com"
+}
