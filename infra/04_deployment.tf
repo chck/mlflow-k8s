@@ -57,7 +57,7 @@ resource "kubernetes_deployment" "mlflow" {
         }
         container {
           name  = "mlflow"
-          image = "chck/mlflow:1.17.1-patch1"
+          image = "chck/mlflow:1.17.0-patch1"
           args = [
             "--static-prefix=/${each.value}",
             "--backend-store-uri=postgresql://$(DB_USER):$(DB_PASS)@$(DB_HOST)/u_${each.value}",
@@ -81,7 +81,7 @@ resource "kubernetes_deployment" "mlflow" {
         }
         container {
           name    = "cloud-sql-proxy"
-          image   = "gcr.io/cloudsql-docker/gce-proxy:1.22.0-alpine"
+          image   = "gcr.io/cloudsql-docker/gce-proxy:1.23.1-alpine"
           command = ["/cloud_sql_proxy", "-instances=${local.common.project}:${local.common.region}:${var.database.instance_name}=tcp:5432"]
           security_context {
             run_as_non_root = true
