@@ -26,7 +26,8 @@ resource "google_sql_database_instance" "postgres" {
 }
 
 resource "random_password" "db_password" {
-  length = 16
+  length  = 16
+  special = false # mlflow uri cannot include a part of special character
 }
 
 resource "google_sql_user" "postgres" {
