@@ -1,6 +1,8 @@
 # mlflow-k8s
 An easy-to-use MLflow platform to track experiments, flexible more users.
 
+Blogged (Japanese): https://cyberagent.ai/blog/research/15272/
+
 ![mlflow-k8s](https://user-images.githubusercontent.com/7288735/118874148-87e82a80-b925-11eb-8728-08fd18231900.png)
 
 ## Prerequisites
