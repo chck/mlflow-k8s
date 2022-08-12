@@ -1,11 +1,11 @@
 version: '3.9'
 services:
   mlflow:
-    image: chck/mlflow:1.17.0-patch1
+    image: chck/mlflow:1.28.0
     build:
       context: .
       cache_from:
-        - chck/mlflow:1.16.0-patch1
+        - chck/mlflow:1.27.0
     command: [
       "--static-prefix=/user1",
       "--gunicorn-opts=--worker-class=gevent --access-logfile=- --timeout=180 --log-level=debug",

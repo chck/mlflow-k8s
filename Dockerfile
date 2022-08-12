@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3.9-slim
 
 ENV APP_DIR=${APP_DIR:-"/home/mlflow"}
 ENV PYTHONUNBUFFERED=1
@@ -17,11 +17,13 @@ WORKDIR /tmp
 RUN poetry install --no-dev
 
 WORKDIR /home
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
- && git clone -b 1.17.0-patch1 --single-branch https://github.com/chck/mlflow.git \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+ && git clone -b v1.28.0 --single-branch https://github.com/mlflow/mlflow.git \
  && cd mlflow/mlflow/server/js \
- && npm install \
- && npm run build
+ && npm install -g -s --no-progress yarn \
+ && yarn install \
+ && yarn build \
+ && yarn cache clean
 WORKDIR ${APP_DIR}
 RUN python setup.py bdist_wheel \
  && pip install -e .
